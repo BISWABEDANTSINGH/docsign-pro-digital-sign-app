@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 // 🔥 FIX 1: Import your custom API instance
 import api from "../api"; 
 import "./Upload.css";
