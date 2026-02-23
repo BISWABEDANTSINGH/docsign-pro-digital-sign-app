@@ -1,0 +1,17 @@
+# Node modules
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Environment variables (KEEP SECRETS SAFE!)
+.env
+client/.env
+server/.env
+
+# Local uploads and generated PDFs
+server/uploads/
+server/signature/
+
+# Build folders
+client/dist/
+server/dist/
