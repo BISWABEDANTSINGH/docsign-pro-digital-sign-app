@@ -18,10 +18,10 @@ connectDB();
 // CORS Configuration (Fixed for Vercel/Render security)
 app.use(cors({
   origin: [
-    "http://localhost:5173",          // For local development
-    "https://docsign-pro.vercel.app", // Your exact live Vercel URL
-    process.env.FRONTEND_URL          // Fallback if set in Render environment variables
-  ].filter(Boolean) as string[],      // Cleans up any undefined values
+    "http://localhost:5173",          
+    "https://docsign-pro-digital-sign-app.vercel.app", // <--- UPDATED URL!
+    process.env.FRONTEND_URL          
+  ].filter(Boolean) as string[],      
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true,
 }));
