@@ -22,7 +22,7 @@ app.use(cors({
     "https://docsign-pro-digital-sign-app.vercel.app", 
     /^https:\/\/docsign-pro-digital-s.*\.vercel\.app$/, 
     process.env.FRONTEND_URL          
-  ].filter(Boolean) as (string | RegExp)[], // <--- This is the magic fix!
+  ].filter(Boolean) as (string | RegExp)[],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true,
 }));
@@ -31,9 +31,15 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 
 // Serve both the uploads and signature folders statically
-// Note: Files saved here on Render will be deleted when the server restarts or redeploys.
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 app.use("/signature", express.static(path.join(__dirname, "../signature")));
+
+// === THE MISSING PING ROUTE ===
+// Health check route for UptimeRobot
+app.use("/ping", (req, res) => {
+  res.status(200).send("Server is awake!");
+});
+// ==============================
 
 // API Routes
 app.use("/api/auth", authRoutes);
