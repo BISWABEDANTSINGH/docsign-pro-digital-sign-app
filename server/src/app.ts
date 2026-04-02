@@ -19,9 +19,10 @@ connectDB();
 app.use(cors({
   origin: [
     "http://localhost:5173",          
-    "https://docsign-pro-digital-sign-app.vercel.app", // <--- UPDATED URL!
+    "https://docsign-pro-digital-sign-app.vercel.app", 
+    /^https:\/\/docsign-pro-digital-s.*\.vercel\.app$/, 
     process.env.FRONTEND_URL          
-  ].filter(Boolean) as string[],      
+  ].filter(Boolean) as (string | RegExp)[], // <--- This is the magic fix!
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true,
 }));
