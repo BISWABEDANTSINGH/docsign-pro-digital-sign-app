@@ -1,7 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 
-const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000/api",
+// Vite uses import.meta.env to access environment variables
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL, 
 });
 
-export default axiosInstance;
+export default api;
